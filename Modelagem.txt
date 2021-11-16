@@ -48,11 +48,11 @@
 		ConsumoEnergia
 		Dano
 	
-	Ataque básico
+	Ataque básico -> HERDA DE ATAQUE
 		Atacar() -> aqui faz a tratativa da regra
 	
-	Ataque agressivo
+	Ataque agressivo -> HERDA DE ATAQUE
 		Atacar()
 		
-	Ataque cruel
+	Ataque cruel -> HERDA DE ATAQUE
 		Atacar()
