@@ -1,0 +1,58 @@
+	POOmon
+		nome
+		imagem
+		história
+		energia vital
+		ataques -> um ArrayList<ATAQUE>
+		ambiente -> objeto da classe ambiente
+		qtdAtivacao;
+		qtdDisputasVencidas;
+		maiorPicoEnergiaVital;
+		dataHoraPicoEnergiaVital;
+		
+		VerificaAmbiente()
+		DefineFormaAtaque()
+		Ataca();
+		Defende();
+		
+		AdicionaLog();
+		ImprimeLogBatalha();
+	
+	Mediador
+		DistribuiCartas()
+	
+	Tabuleiro
+		Mediador
+		Batalha -> objeto de batalha
+		equipes -> ArrayList<EQUIPE>, especificamente 8
+		
+		PerguntaVitalidade();
+		
+	Batalha
+		ArrayList<Disputas> disputas;
+		vencedor;
+		
+		ImprimeChaveamento();
+		
+	Disputa
+		Jogador1 -> Poomon
+		Jogador2 -> Poomon
+		Vencedor -> id do poomon???
+		Ambiente -> objeto da classe ambiente
+		
+	Ambiente
+		influencia de ataque
+		influencia de resistencia
+		
+	Ataque
+		ConsumoEnergia
+		Dano
+	
+	Ataque básico
+		Atacar() -> aqui faz a tratativa da regra
+	
+	Ataque agressivo
+		Atacar()
+		
+	Ataque cruel
+		Atacar()
