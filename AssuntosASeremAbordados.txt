@@ -1,0 +1,5 @@
+Assuntos a serem abordados:
+	Utilização de imagem
+	Gravação e Leitura em arquivo (XML, .txt, JSON, etc) ou Banco de Dados
+	Utilizar o Git
+	
