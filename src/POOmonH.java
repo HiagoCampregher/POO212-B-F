@@ -6,7 +6,7 @@ import moduloBGame.Ambiente;
 import moduloBGame.Mediador;
 import moduloBGame.POOmonComportamento;
 
-public class Fellion implements POOmonComportamento
+public class POOmonH implements POOmonComportamento
 {
 	private Ambiente ambiente;
 	private int energiaVital;
@@ -16,28 +16,35 @@ public class Fellion implements POOmonComportamento
 	private LocalDateTime momentoMaiorEnergiaVital;
 	private ImageIO imagem;
 	
+	public POOmonH(){}
+	
 	@Override
 	public Ambiente getAmbienteOriginario()
 	{
-		return null;
+		return Ambiente.AGUA;
 	}
 	
 	@Override
 	public String getNome()
 	{
-		return "Fellion";
+		return "Fusion";
 	}
 	
 	@Override
 	public String getHistoria()
 	{
-		return "Um POOmon que vivia calmamente embaixo das montanhas no início do mundo. Com a chegada dos humanos nos vilarejos ao redor das montanhas onde vivia, Fellion decidiu cuidar de todo esse ambiente, incluindo a natureza por si só, os humanos e até outros POOmons que ali começaram a viver. Por isso, Fellion também é considerado um POOmon companheiro e protetor.";
+		return "Após uma grande batalha entre 2 POOmons lendários que deu origem aos continentes e mares, Fusion foi criado por Arceus e se tornou responsável e protetor dos mares do mundo.";
 	}
 	
 	@Override
 	public int getEnergia()
 	{
 		return energiaVital;
+	}
+	
+	public void setEnergia(int energiaVital)
+	{
+		this.energiaVital = energiaVital;
 	}
 	
 	@Override
@@ -82,8 +89,13 @@ public class Fellion implements POOmonComportamento
 	}
 	
 	@Override
-	public void receberAtaque(int arg0, Ambiente arg1)
+	public void receberAtaque(int danoAtaque, Ambiente objAmbiente)
 	{
+		if(objAmbiente == this.getAmbiente()) {
+			danoAtaque -= 0.1;
+		}
+		
+		this.setEnergia((this.getEnergia() - danoAtaque));
 	}
 	
 	@Override

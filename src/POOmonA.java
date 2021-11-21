@@ -6,7 +6,7 @@ import moduloBGame.Ambiente;
 import moduloBGame.Mediador;
 import moduloBGame.POOmonComportamento;
 
-public class Fenix implements POOmonComportamento
+public class POOmonA implements POOmonComportamento
 {
 	private Ambiente ambiente;
 	private int energiaVital;
@@ -16,10 +16,12 @@ public class Fenix implements POOmonComportamento
 	private LocalDateTime momentoMaiorEnergiaVital;
 	private ImageIO imagem;
 	
+	public POOmonA(){}
+	
 	@Override
 	public Ambiente getAmbienteOriginario()
 	{
-		return null;
+		return Ambiente.AR;
 	}
 	
 	@Override
@@ -38,6 +40,11 @@ public class Fenix implements POOmonComportamento
 	public int getEnergia()
 	{
 		return energiaVital;
+	}
+	
+	public void setEnergia(int energiaVital)
+	{
+		this.energiaVital = energiaVital;
 	}
 	
 	@Override
@@ -82,8 +89,13 @@ public class Fenix implements POOmonComportamento
 	}
 	
 	@Override
-	public void receberAtaque(int arg0, Ambiente arg1)
+	public void receberAtaque(int danoAtaque, Ambiente objAmbiente)
 	{
+		if(objAmbiente == this.getAmbiente()) {
+			danoAtaque -= 0.1;
+		}
+		
+		this.setEnergia((this.getEnergia() - danoAtaque));
 	}
 	
 	@Override
