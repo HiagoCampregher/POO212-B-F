@@ -21,7 +21,6 @@ public abstract class POOmon implements POOmonComportamento
 	
 	public POOmon()
 	{
-		setEnergia(500);
 		++qtdAtivacoes;
 		
 		this.setEnergia(500);
@@ -107,6 +106,16 @@ public abstract class POOmon implements POOmonComportamento
 	public void setMediador(Mediador arg0)
 	{
 		this.mediador = arg0;
+	}
+	
+	public void setOponente(POOmonComportamento arg0)
+	{
+		this.oponente = arg0;
+	}
+	
+	public POOmonComportamento getOponente()
+	{
+		return this.oponente;
 	}
 	
 	@Override

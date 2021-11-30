@@ -34,11 +34,6 @@ public class POOmonH extends POOmon
 	}
 	
 	@Override
-	public void atacar(POOmonComportamento arg0, Ambiente arg1)
-	{
-	}
-	
-	@Override
 	public Image getImagem()
 	{
 		String pathImagem;
@@ -68,14 +63,45 @@ public class POOmonH extends POOmon
 	}
 
 	@Override
-	public void atacar(Ambiente arg0) {
-		// TODO Auto-generated method stub
-		
+	public void atacar(Ambiente arg0)
+	{
+		if (getEnergia() < 80)
+		{
+			if (arg0 == getAmbienteOriginario())
+				getOponente().receberAtaque(36, arg0);
+			else
+				getOponente().receberAtaque(30, arg0);
+		}
+		else if (getEnergia() > 140)
+		{
+			if (arg0 == getAmbienteOriginario())
+			{
+				this.setEnergia(this.getEnergia() - 96);				
+				getOponente().receberAtaque(96, arg0);
+			}
+			else
+			{
+				this.setEnergia(this.getEnergia() - 80);				
+				getOponente().receberAtaque(80, arg0);
+			}
+		}		
+		else if (getEnergia() > 300)
+		{
+			if (arg0 == getAmbienteOriginario())
+			{
+				this.setEnergia(this.getEnergia() - 150);				
+				getOponente().receberAtaque(255, arg0);
+			}
+			else
+			{
+				this.setEnergia(this.getEnergia() - 150);
+				getOponente().receberAtaque(225, arg0);
+			}
+		}
 	}
 
 	@Override
 	public void informarOponente(POOmonComportamento arg0) {
-		// TODO Auto-generated method stub
-		
+		setOponente(arg0);
 	}
 }

@@ -34,13 +34,6 @@ public class POOmonT extends POOmon
 	}
 
 	@Override
-	public void atacar(POOmonComportamento arg0, Ambiente arg1)
-	{
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
 	public Image getImagem()
 	{
 		String pathImagem;
