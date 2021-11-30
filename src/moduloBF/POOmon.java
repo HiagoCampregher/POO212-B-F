@@ -1,4 +1,4 @@
-package moduloBC;
+package moduloBF;
 import java.awt.Image;
 import java.time.LocalDateTime;
 
@@ -95,8 +95,6 @@ public abstract class POOmon implements POOmonComportamento
 		this.setEnergia(this.getEnergia() - danoAtaque);
 	}
 	
-	public abstract void atacar(POOmonComportamento arg0, Ambiente arg1);
-	
 	@Override
 	public void carregar(int arg0)
 	{
@@ -128,5 +126,10 @@ public abstract class POOmon implements POOmonComportamento
 	public void escreveLog(String log)
 	{
 		conteudoLog += (log + "\n");
+	}
+
+	public void atacar(POOmonComportamento arg0, Ambiente arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

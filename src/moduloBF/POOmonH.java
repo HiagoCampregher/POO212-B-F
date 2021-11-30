@@ -1,4 +1,4 @@
-package moduloBC;
+package moduloBF;
 
 import java.awt.Image;
 import java.io.IOException;
@@ -65,5 +65,17 @@ public class POOmonH extends POOmon
 		}
 		
 		return image;
+	}
+
+	@Override
+	public void atacar(Ambiente arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void informarOponente(POOmonComportamento arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

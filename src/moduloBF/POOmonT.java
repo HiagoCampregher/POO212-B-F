@@ -1,4 +1,4 @@
-package moduloBC;
+package moduloBF;
 
 import java.awt.Image;
 import java.io.IOException;
@@ -10,6 +10,11 @@ import moduloBGame.POOmonComportamento;
 
 public class POOmonT extends POOmon
 {
+	public POOmonT()
+	{
+		
+	}
+	
 	@Override
 	public Ambiente getAmbienteOriginario()
 	{
@@ -62,5 +67,17 @@ public class POOmonT extends POOmon
 		}
 		
 		return image;
+	}
+
+	@Override
+	public void atacar(Ambiente arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void informarOponente(POOmonComportamento arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

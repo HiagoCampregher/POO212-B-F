@@ -1,4 +1,4 @@
-package moduloBC;
+package moduloBF;
 import java.awt.Image;
 import java.io.IOException;
 
@@ -9,6 +9,11 @@ import moduloBGame.POOmonComportamento;
 
 public class POOmonA extends POOmon
 {
+	public POOmonA()
+	{
+		
+	}
+	
 	@Override
 	public Ambiente getAmbienteOriginario()
 	{
@@ -25,13 +30,6 @@ public class POOmonA extends POOmon
 	public String getHistoria()
 	{
 		return "Após ser deserdado do mundo por seu criador Arceus por seu comportamento agressivo, Fenix volta ao mundo natural de uma forma diferente, buscando mostrar sua compaixão e carisma.";
-	}
-	
-	@Override
-	public void atacar(POOmonComportamento arg0, Ambiente arg1)
-	{
-		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
@@ -61,5 +59,23 @@ public class POOmonA extends POOmon
 		}
 		
 		return image;
+	}
+
+	@Override
+	public void atacar(Ambiente arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void informarOponente(POOmonComportamento arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacar(POOmonComportamento arg0, Ambiente arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }
