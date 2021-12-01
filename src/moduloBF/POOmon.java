@@ -88,7 +88,7 @@ public abstract class POOmon implements POOmonComportamento
 	public void receberAtaque(int danoAtaque, Ambiente objAmbiente)
 	{
 		if(objAmbiente == this.getAmbiente()) {
-			danoAtaque -= 0.1;
+			danoAtaque -= 0.1;//arrumar aq
 		}
 		
 		this.setEnergia(this.getEnergia() - danoAtaque);
