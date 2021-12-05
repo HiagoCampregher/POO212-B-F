@@ -1,18 +1,46 @@
 package moduloBF;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.imageio.ImageIO;
 
 import moduloBGame.Ambiente;
-import moduloBGame.POOmonComportamento;
 
 public class POOmonH extends POOmon
 {
 	public POOmonH()
 	{
 		
+	}
+	
+	public void GravaDados()
+	{
+	     File arq = new File("POOmonH");
+	     
+	      try
+	      {
+	        arq.delete();
+	        arq.createNewFile();
+
+	        ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
+	        objOutput.writeObject(this);
+	        objOutput.close();
+
+	      }
+	      catch(IOException erro)
+	      {
+	          System.out.printf("Erro: %s", erro.getMessage());
+	      }
+	}
+	
+	public void LeDados()
+	{
 	}
 	
 	@Override
@@ -65,43 +93,36 @@ public class POOmonH extends POOmon
 	@Override
 	public void atacar(Ambiente arg0)
 	{
-		if (getEnergia() < 80)
+		String tipoAtaque = "";
+		int dano = 0;
+		int consumo = 0;
+		
+		if (getEnergia() > 240)
 		{
-			if (arg0 == getAmbienteOriginario())
-				getOponente().receberAtaque(36, arg0);
-			else
-				getOponente().receberAtaque(30, arg0);
+			tipoAtaque = "Cruel";
+			dano = 180;
+			consumo = 120;
 		}
 		else if (getEnergia() > 140)
 		{
-			if (arg0 == getAmbienteOriginario())
-			{
-				this.setEnergia(this.getEnergia() - 96);				
-				getOponente().receberAtaque(96, arg0);
-			}
-			else
-			{
-				this.setEnergia(this.getEnergia() - 80);				
-				getOponente().receberAtaque(80, arg0);
-			}
-		}		
-		else if (getEnergia() > 300)
+			tipoAtaque = "Agressivo";
+			dano = 80;
+			consumo = 80;
+		}	
+		else
 		{
-			if (arg0 == getAmbienteOriginario())
-			{
-				this.setEnergia(this.getEnergia() - 150);				
-				getOponente().receberAtaque(255, arg0);
-			}
-			else
-			{
-				this.setEnergia(this.getEnergia() - 150);
-				getOponente().receberAtaque(225, arg0);
-			}
+			tipoAtaque = "Básico";
+			dano = 30;
 		}
-	}
+			
+		this.setEnergia(this.getEnergia() - dano);				
 
-	@Override
-	public void informarOponente(POOmonComportamento arg0) {
-		setOponente(arg0);
+		int danoExtra = 0;
+		if (arg0 == getAmbienteOriginario())
+			danoExtra = (int)(0.2 * dano);
+			
+		getOponente().receberAtaque(dano, arg0);
+		
+		escreveLog("Ataque efetuado: " + tipoAtaque + " " + dano + "(" + (dano + danoExtra) + ") – " + arg0 + "(-" + consumo + ")");
 	}
 }

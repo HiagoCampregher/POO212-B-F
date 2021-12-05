@@ -1,0 +1,24 @@
+Log de batalha
+POOmon: Fellion – TERRA
+teste
+Energia recebida: 500
+teste
+teste
+teste
+teste
+teste
+teste
+teste
+
+Oponente: POOmonStub - AGUA
+teste
+teste
+teste
+Ataque efetuado: Cruel 180(216) – TERRA(-120)
+teste
+teste
+Ataque recebido: 100 - TERRA(-100)
+Energia recebida: 50
+teste
+teste
+Derrota

@@ -1,5 +1,8 @@
 package moduloBF;
 import java.awt.Image;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 import moduloBGame.Ambiente;
@@ -14,24 +17,20 @@ public abstract class POOmon implements POOmonComportamento
 	private int maiorEnergiaVital = 0;
 	private int qtdAtivacoes = 0;
 	private LocalDateTime momentoMaiorEnergiaVital;
-	private Image imagem;
-	private Mediador mediador;
-	private String conteudoLog;
+	private String conteudoLog = "";
 	private POOmonComportamento oponente;
+	private Mediador mediador;
 	
 	public POOmon()
 	{
 		++qtdAtivacoes;
-		
-		this.setEnergia(500);
-		this.setMediador(mediador);
-
-		this.escreveLog("Log de batalha \n POOmon: " + this.getNome() + " – " + this.getAmbienteOriginario() + "\n");
+		this.escreveLog("Log de batalha\nPOOmon: " + this.getNome() + " – " + this.getAmbienteOriginario());//ver se n precisa transformar pra string
 	}
 	
 	@Override
 	public int getEnergia()
 	{
+		this.escreveLog("teste");
 		return energiaVital;
 	}
 	
@@ -87,11 +86,12 @@ public abstract class POOmon implements POOmonComportamento
 	@Override
 	public void receberAtaque(int danoAtaque, Ambiente objAmbiente)
 	{
-		if(objAmbiente == this.getAmbiente()) {
-			danoAtaque -= 0.1;//arrumar aq
-		}
+		int danoAtaqueFinal = danoAtaque;
+		if(objAmbiente == this.getAmbiente())
+			danoAtaqueFinal -= (0.1 * danoAtaque);
 		
-		this.setEnergia(this.getEnergia() - danoAtaque);
+		this.setEnergia(this.getEnergia() - danoAtaqueFinal);
+		this.escreveLog("Ataque recebido: " + danoAtaque + " - " + objAmbiente + "(-" + danoAtaqueFinal + ")");
 	}
 	
 	@Override
@@ -108,22 +108,24 @@ public abstract class POOmon implements POOmonComportamento
 		this.mediador = arg0;
 	}
 	
-	public void setOponente(POOmonComportamento arg0)
-	{
-		this.oponente = arg0;
-	}
-	
 	public POOmonComportamento getOponente()
 	{
 		return this.oponente;
 	}
 	
 	@Override
+	public void informarOponente(POOmonComportamento arg0)
+	{
+		this.escreveLog("\nOponente: " + arg0.getNome() + " - " + arg0.getAmbienteOriginario());
+		
+		this.oponente = arg0;
+	}
+	
+	@Override
 	public void vitoria()
 	{
-		carregar(500);
-		
 		++qtdVitorias;
+		this.escreveLog("Vitória");
 	}
 	
 	@Override
@@ -134,11 +136,29 @@ public abstract class POOmon implements POOmonComportamento
 	
 	public void escreveLog(String log)
 	{
-		conteudoLog += (log + "\n");
-	}
-
-	public void atacar(POOmonComportamento arg0, Ambiente arg1) {
-		// TODO Auto-generated method stub
+		if (log == null || log.isBlank())
+			throw new IllegalArgumentException("Informe alguma coisa para o log.");
 		
+		this.conteudoLog += (log + "\n");
+		
+		//if (this.mediador == null)
+			//throw new IllegalArgumentException("Informe o mediador.");
+		
+		try
+		{
+			//getMediador().getPastaLogs();
+			File file = new File("C:\\Users\\Hiago Campregher\\Desktop\\POOmon\\teste.txt");
+			file.setWritable(true);
+			file.setWritable(true);
+			
+			FileWriter fw = new FileWriter(file);
+			fw.write(conteudoLog);
+			fw.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+			System.out.println("Erro ao gravar o log de batalha.");
+		}
 	}
 }

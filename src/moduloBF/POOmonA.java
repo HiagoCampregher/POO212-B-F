@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import moduloBGame.Ambiente;
-import moduloBGame.POOmonComportamento;
 
 public class POOmonA extends POOmon
 {
@@ -54,28 +53,46 @@ public class POOmonA extends POOmon
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			System.out.println(e.toString());
 		}
 		
 		return image;
 	}
 
 	@Override
-	public void atacar(Ambiente arg0) {
-		// TODO Auto-generated method stub
+	public void atacar(Ambiente arg0)
+	{
+		String tipoAtaque = "";
+		int dano = 0;
+		int consumo = 0;
 		
-	}
+		if (getEnergia() > 240)
+		{
+			tipoAtaque = "Cruel";
+			dano = 180;
+			consumo = 120;
+		}
+		else if (getEnergia() > 140)
+		{
+			tipoAtaque = "Agressivo";
+			dano = 80;
+			consumo = 80;
+		}	
+		else
+		{
+			tipoAtaque = "Básico";
+			dano = 30;
+		}
+			
+		this.setEnergia(this.getEnergia() - dano);				
 
-	@Override
-	public void informarOponente(POOmonComportamento arg0) {
-		// TODO Auto-generated method stub
+		int danoExtra = 0;
+		if (arg0 == getAmbienteOriginario())
+			danoExtra = (int)(0.2 * dano);
+			
+		getOponente().receberAtaque(dano, arg0);
 		
-	}
-
-	@Override
-	public void atacar(POOmonComportamento arg0, Ambiente arg1) {
-		// TODO Auto-generated method stub
-		
+		escreveLog("Ataque efetuado: " + tipoAtaque + " " + dano + "(" + (dano + danoExtra) + ") – " + arg0 + "(-" + consumo + ")");
 	}
 }
