@@ -85,13 +85,13 @@ public class POOmonA extends POOmon
 			dano = 30;
 		}
 			
-		this.setEnergia(this.getEnergia() - dano);				
+		this.setEnergia(this.getEnergia() - consumo);				
 
 		int danoExtra = 0;
 		if (arg0 == getAmbienteOriginario())
 			danoExtra = (int)(0.2 * dano);
 			
-		getOponente().receberAtaque(dano, arg0);
+		getOponente().receberAtaque((dano + danoExtra), arg0);
 		
 		escreveLog("Ataque efetuado: " + tipoAtaque + " " + dano + "(" + (dano + danoExtra) + ") – " + arg0 + "(-" + consumo + ")");
 	}

@@ -1,12 +1,7 @@
 package moduloBF;
 
 import java.awt.Image;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 
 import javax.imageio.ImageIO;
 
@@ -16,33 +11,8 @@ public class POOmonH extends POOmon
 {
 	public POOmonH()
 	{
-		
 	}
-	
-	public void GravaDados()
-	{
-	     File arq = new File("POOmonH");
-	     
-	      try
-	      {
-	        arq.delete();
-	        arq.createNewFile();
 
-	        ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
-	        objOutput.writeObject(this);
-	        objOutput.close();
-
-	      }
-	      catch(IOException erro)
-	      {
-	          System.out.printf("Erro: %s", erro.getMessage());
-	      }
-	}
-	
-	public void LeDados()
-	{
-	}
-	
 	@Override
 	public Ambiente getAmbienteOriginario()
 	{
@@ -115,13 +85,13 @@ public class POOmonH extends POOmon
 			dano = 30;
 		}
 			
-		this.setEnergia(this.getEnergia() - dano);				
+		this.setEnergia(this.getEnergia() - consumo);				
 
 		int danoExtra = 0;
 		if (arg0 == getAmbienteOriginario())
 			danoExtra = (int)(0.2 * dano);
 			
-		getOponente().receberAtaque(dano, arg0);
+		getOponente().receberAtaque((dano + danoExtra), arg0);
 		
 		escreveLog("Ataque efetuado: " + tipoAtaque + " " + dano + "(" + (dano + danoExtra) + ") – " + arg0 + "(-" + consumo + ")");
 	}

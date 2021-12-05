@@ -1,24 +1,15 @@
 Log de batalha
-POOmon: Fellion – TERRA
-teste
+POOmon: Fusion – AGUA
+
+Alo2
+Alo0 - 0
 Energia recebida: 500
-teste
-teste
-teste
-teste
-teste
-teste
-teste
+Minha energia vital: 500 - 05/12/2021 - 20:44:04
 
 Oponente: POOmonStub - AGUA
-teste
-teste
-teste
-Ataque efetuado: Cruel 180(216) – TERRA(-120)
-teste
-teste
+Minha energia vital: 500 - 05/12/2021 - 20:44:05
+Ataque efetuado: Cruel 180(180) – TERRA(-120)
 Ataque recebido: 100 - TERRA(-100)
 Energia recebida: 50
-teste
-teste
+Minha energia vital: 330 - 05/12/2021 - 20:44:05
 Derrota
