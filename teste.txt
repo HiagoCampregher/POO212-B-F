@@ -1,15 +1,13 @@
 Log de batalha
 POOmon: Fusion – AGUA
-
-Alo2
-Alo0 - 0
+Leu3
 Energia recebida: 500
-Minha energia vital: 500 - 05/12/2021 - 20:44:04
+Minha energia vital: 500 - 06/12/2021 - 18:30:04
 
 Oponente: POOmonStub - AGUA
-Minha energia vital: 500 - 05/12/2021 - 20:44:05
+Minha energia vital: 500 - 06/12/2021 - 18:30:05
 Ataque efetuado: Cruel 180(180) – TERRA(-120)
 Ataque recebido: 100 - TERRA(-100)
 Energia recebida: 50
-Minha energia vital: 330 - 05/12/2021 - 20:44:05
+Minha energia vital: 330 - 06/12/2021 - 18:30:05
 Derrota

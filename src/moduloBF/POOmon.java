@@ -20,13 +20,10 @@ public abstract class POOmon implements POOmonComportamento
 {
 	private Ambiente ambiente;
 	private int energiaVital = 0;
-	private int qtdVitorias = 0;
-	private int maiorEnergiaVital = 0;
-	private int qtdAtivacoes = 0;
-	private LocalDateTime momentoMaiorEnergiaVital;
 	private String conteudoLog = "";
 	private POOmonComportamento oponente;
 	private Mediador mediador;
+	private Estatistica estatistica = new Estatistica();
 	
 	public POOmon()
 	{
@@ -43,10 +40,10 @@ public abstract class POOmon implements POOmonComportamento
 	{
 		this.energiaVital = energia;
 
-		if (energiaVital > this.maiorEnergiaVital)
+		if (energiaVital > estatistica.getMaiorEnergiaVital())
 		{
-			this.maiorEnergiaVital = energiaVital;
-			this.momentoMaiorEnergiaVital = LocalDateTime.now();
+			estatistica.setMaiorEnergiaVital(energiaVital);
+			estatistica.setMomentoMaiorEnergiaVital(LocalDateTime.now());
 		}
 	}
 	
@@ -61,25 +58,25 @@ public abstract class POOmon implements POOmonComportamento
 	@Override
 	public LocalDateTime getMomentoMaiorEnergiaVital()
 	{
-		return momentoMaiorEnergiaVital;
+		return estatistica.getMomentoMaiorEnergiaVital();
 	}
 	
 	@Override
 	public int getMaiorEnergiaVital()
 	{
-		return maiorEnergiaVital;
+		return estatistica.getMaiorEnergiaVital();
 	}
 	
 	@Override
 	public int getQtdActivacoes()
 	{
-		return qtdAtivacoes;
+		return estatistica.getQtdAtivacoes();
 	}
 	
 	@Override
 	public int getVitorias()
 	{
-		return qtdVitorias;
+		return estatistica.getQtdVitorias();
 	}
 	
 	@Override
@@ -148,8 +145,9 @@ public abstract class POOmon implements POOmonComportamento
 	{
 		GravaDados();
 		
-		++qtdAtivacoes;
-		++qtdVitorias;
+		estatistica.setQtdAtivacoes(estatistica.getQtdAtivacoes() + 1);
+		estatistica.setQtdVitorias (estatistica.getQtdVitorias () + 1);
+		
 		this.escreveLog("Vitória");
 	}
 	
@@ -158,7 +156,7 @@ public abstract class POOmon implements POOmonComportamento
 	{
 		GravaDados();
 		
-		++qtdAtivacoes;
+		estatistica.setQtdAtivacoes(estatistica.getQtdAtivacoes() + 1);
 		this.escreveLog("Derrota");
 	}
 	
@@ -199,13 +197,7 @@ public abstract class POOmon implements POOmonComportamento
 
 	        ObjectOutputStream objOutput = new ObjectOutputStream(new FileOutputStream(arq));
 	        
-	        Estatistica estatisticas = new Estatistica();
-	        estatisticas.setMaiorEnergiaVital(maiorEnergiaVital);
-	        estatisticas.setMomentoMaiorEnergiaVital(momentoMaiorEnergiaVital);
-	        estatisticas.setQtdAtivacoes(qtdAtivacoes);
-	        estatisticas.setQtdVitorias(qtdVitorias);
-	        
-	        objOutput.writeObject(estatisticas);
+	        objOutput.writeObject(estatistica);
 	        objOutput.close();
 	      }
 	      catch(IOException erro)
@@ -216,25 +208,22 @@ public abstract class POOmon implements POOmonComportamento
 	
 	public void LeDados()
 	{
-	      try {
+	      try
+	      {
 	        File arq = new File("POOmon" + getNome() + ".dat");
-	        if (arq.exists()) {
+	        if (arq.exists())
+	        {
 	           ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
-	           Estatistica estatisticas = (Estatistica)objInput.readObject();
-
-	           if (estatisticas != null)
-	           {
-	        	   this.qtdAtivacoes = estatisticas.getQtdAtivacoes();
-	        	   this.qtdVitorias = estatisticas.getQtdVitorias();
-	        	   this.maiorEnergiaVital = estatisticas.getMaiorEnergiaVital();
-	        	   this.momentoMaiorEnergiaVital = estatisticas.getMomentoMaiorEnergiaVital();
-	           }
-	        	   
+	           estatistica = (Estatistica)objInput.readObject();
+	           
 	           objInput.close();
 	        }
-	      } catch(IOException erro1) {
+	      }
+	      catch(IOException erro1)
+	      {
 	          System.out.printf("Erro: %s", erro1.getMessage());
-	      } catch(ClassNotFoundException erro2) {
+	      }
+	      catch(ClassNotFoundException erro2) {
 	          System.out.printf("Erro: %s", erro2.getMessage());
 	      }
 	}
