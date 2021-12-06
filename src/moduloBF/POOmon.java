@@ -120,11 +120,11 @@ public abstract class POOmon implements POOmonComportamento
 		if (arg0 == null)
 			throw new IllegalArgumentException("Informe um mediador.");
 		
+		this.mediador = arg0;
+
 		this.escreveLog("Log de batalha\nPOOmon: " + this.getNome() + " – " + this.getAmbienteOriginario());
 		
 		LeDados();
-			
-		this.mediador = arg0;
 	}
 	
 	public POOmonComportamento getOponente()
