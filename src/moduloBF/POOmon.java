@@ -27,7 +27,7 @@ public abstract class POOmon implements POOmonComportamento
 	
 	public POOmon()
 	{
-		this.escreveLog("Log de batalha\nPOOmon: " + this.getNome() + " – " + this.getAmbienteOriginario());
+		
 	}
 	
 	@Override
@@ -120,6 +120,8 @@ public abstract class POOmon implements POOmonComportamento
 		if (arg0 == null)
 			throw new IllegalArgumentException("Informe um mediador.");
 		
+		this.escreveLog("Log de batalha\nPOOmon: " + this.getNome() + " – " + this.getAmbienteOriginario());
+		
 		LeDados();
 			
 		this.mediador = arg0;
@@ -169,7 +171,7 @@ public abstract class POOmon implements POOmonComportamento
 		
 		try
 		{
-			//mediador.getPastaLogs().toString() + "\\POOmon" + getNome() + ".txt";
+			//"C:\\Users\\Hiago Campregher\\Desktop\\POOmon\\teste.txt"
 			
 			File file = new File(mediador.getPastaLogs().toString() + "\\POOmon" + getNome() + ".txt");
 			file.setWritable(true);
@@ -188,7 +190,7 @@ public abstract class POOmon implements POOmonComportamento
 	
 	public void GravaDados()
 	{
-	     File arq = new File("POOmon" + getNome() + ".dat");
+	     File arq = new File(mediador.getPastaDados().toString() + "\\POOmon" + getNome() + ".dat");
 	     
 	      try
 	      {
@@ -210,7 +212,7 @@ public abstract class POOmon implements POOmonComportamento
 	{
 	      try
 	      {
-	        File arq = new File("POOmon" + getNome() + ".dat");
+	        File arq = new File(mediador.getPastaDados().toString() + "\\POOmon" + getNome() + ".dat");
 	        if (arq.exists())
 	        {
 	           ObjectInputStream objInput = new ObjectInputStream(new FileInputStream(arq));
