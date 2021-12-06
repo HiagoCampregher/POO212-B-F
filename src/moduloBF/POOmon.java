@@ -171,7 +171,7 @@ public abstract class POOmon implements POOmonComportamento
 		{
 			//mediador.getPastaLogs().toString() + "\\POOmon" + getNome() + ".txt";
 			
-			File file = new File("C:\\Users\\Hiago Campregher\\Desktop\\POOmon\\teste.txt");
+			File file = new File(mediador.getPastaLogs().toString() + "\\POOmon" + getNome() + ".txt");
 			file.setWritable(true);
 			file.setReadable(true);
 			
