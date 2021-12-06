@@ -74,7 +74,7 @@ public class POOmonT extends POOmon
 			dano = 180;
 			consumo = 120;
 		}
-		else if (getEnergia() > 140)
+		else if (getEnergia() > 80)
 		{
 			tipoAtaque = "Agressivo";
 			dano = 80;

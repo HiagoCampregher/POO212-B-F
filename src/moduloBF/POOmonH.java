@@ -67,17 +67,17 @@ public class POOmonH extends POOmon
 		int dano = 0;
 		int consumo = 0;
 		
-		if (getEnergia() > 240)
+		if (getEnergia() > 400)
 		{
 			tipoAtaque = "Cruel";
-			dano = 180;
-			consumo = 120;
+			dano = 300;
+			consumo = 200;
 		}
-		else if (getEnergia() > 140)
+		else if (getEnergia() > 40)
 		{
 			tipoAtaque = "Agressivo";
-			dano = 80;
-			consumo = 80;
+			dano = 40;
+			consumo = 40;
 		}	
 		else
 		{
